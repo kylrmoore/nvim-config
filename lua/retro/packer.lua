@@ -16,6 +16,7 @@ use 'wbthomason/packer.nvim'
 
   -- use({ 'rose-pine/neovim', as = 'rose-pine' })
   -- vim.cmd('colorscheme rose-pine')
+  use('preservim/nerdcommenter')
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use('nvim-treesitter/playground')
