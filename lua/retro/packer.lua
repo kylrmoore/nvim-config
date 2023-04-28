@@ -16,6 +16,8 @@ use 'wbthomason/packer.nvim'
 
   -- use({ 'rose-pine/neovim', as = 'rose-pine' })
   -- vim.cmd('colorscheme rose-pine')
+  use { "catppuccin/nvim", as = "catppuccin" }
+
   use('preservim/nerdcommenter')
 
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -65,5 +67,10 @@ use {
   'nvim-lualine/lualine.nvim',
   requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 }
+
+use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+})
 
 end)
