@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
 use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
+	  'nvim-telescope/telescope.nvim', tag = '*',
 	  -- or                            , branch = '0.1.x',
 	  requires = {
           {'nvim-lua/plenary.nvim'},
@@ -23,8 +23,9 @@ use 'wbthomason/packer.nvim'
 
   use('preservim/nerdcommenter')
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use('nvim-treesitter/playground')
+  --use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use { 'nvim-treesitter/nvim-treesitter', branch = 'main', run = ':TSUpdate' }
+  --use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
@@ -87,5 +88,33 @@ use({
 use ({
     'hrsh7th/cmp-cmdline'
 })
+
+use('dhruvasagar/vim-table-mode')
+
+use('RishabhRD/popfix')
+use('RishabhRD/nvim-cheat.sh')
+use('MeanderingProgrammer/render-markdown.nvim')
+use('hat0uma/csvview.nvim')
+use('jbyuki/venn.nvim')
+
+use {
+  'lervag/vimtex',
+  config = function()
+    vim.g.vimtex_compiler_method = 'latexmk'
+    
+    -- THIS IS THE FIX:
+    -- Tell vimtex *exactly* where zathura is
+    vim.g.vimtex_view_method = 'zathura'
+    vim.g.vimtex_view_zathura = {
+      executable = '/opt/homebrew/bin/zathura',
+    }
+
+    -- This is the fix we added earlier
+    vim.g.vimtex_compiler_latexmk = {
+      executable = '/Library/TeX/texbin/latexmk',
+      continuous = 1,
+    }
+  end,
+}
 
 end)
